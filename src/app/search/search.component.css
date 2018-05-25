@@ -1,0 +1,22 @@
+mat-form-field {
+  width: 25%;
+}
+
+mat-expansion-panel {
+  margin: 5px;
+  width: 50%;
+}
+
+mat-form-field.radius {
+  display: inline-block;
+}
+
+mat-slider {
+  margin: 5px;
+}
+
+.range {
+  display: inline-block;
+  width: 30px;
+  margin-left: 3px;
+}

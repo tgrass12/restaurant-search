@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-title>
+    {{restaurant.name}}  
+  </mat-card-title>
+  <mat-card-subtitle>
+   {{restaurant.address}}
+  </mat-card-subtitle>
+  <mat-card-content>
+    <p *ngIf="restaurant.price">Price: {{restaurant.price | price }}</p>
+    <p *ngIf="restaurant.rating">Rating: {{restaurant.rating}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="getDirections()">Directions</button>
+  </mat-card-actions>
+</mat-card>

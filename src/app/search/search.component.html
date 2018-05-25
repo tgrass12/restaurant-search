@@ -1,0 +1,126 @@
+<form (ngSubmit)="onSearch(searchForm)" #searchForm="ngForm">
+  <div>
+    <label>Search For </label>
+    <mat-form-field>
+      <input
+        type="text"
+        id="keyword"
+        name="keyword"
+        placeholder="Restaurants"
+        class="form-control"
+        matInput
+        [(ngModel)]="keyword"
+      >
+      <mat-hint>
+        Italian, IHOP, Fast Food
+      </mat-hint>
+    </mat-form-field>
+    <label>Near: </label>
+    <mat-form-field>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        placeholder="Address/Postal Code"
+        class="form-control"
+        [(ngModel)]="address"
+        matInput
+        required
+      >
+    </mat-form-field>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Advanced Options
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <label>Radius</label>
+        <mat-slider
+          min="1"
+          max="30"
+          step="1"
+          name="radius"
+          [(ngModel)]="radius"
+          class="form-control"
+          [disabled]="sortBy === 'distance'"
+        >      
+        </mat-slider>
+        <label matSuffix>{{radius}} Mi.</label>
+      </div>
+      <div>
+        <div class="ranges">
+          <label>Price Range</label>
+          <div>
+            <input
+              type="number"
+              id="minPrice"
+              name="minPrice"
+              min="0"
+              [max]="maxPrice"
+              class="form-control range"
+              [(ngModel)]="minPrice"
+              matInput
+            >
+            <span>to</span>
+             <input
+              type="number"
+              id="maxPrice"
+              name="maxPrice"
+              [min]="minPrice"
+              max="4"
+              class="form-control range"
+              [(ngModel)]="maxPrice"
+              matInput
+            >
+          </div>     
+        </div>
+        <div>
+          <label>Rating Range</label>
+          <div>
+            <input
+              type="number"
+              id="minRating"
+              name="minRating"
+              min="1"
+              [max]="maxRating"
+              class="form-control range"
+              [(ngModel)]="minRating"
+              matInput
+            >
+            <span>to</span>
+             <input
+              type="number"
+              id="maxRating"
+              name="maxRating"
+              [min]="minRating"
+              max="5"
+              class="form-control range"
+              [(ngModel)]="maxRating"
+              matInput
+            >
+          </div>     
+        </div>
+      </div>
+      <div>
+        <label>Sort by...</label>
+        <mat-form-field>
+          <mat-select
+            name="sortBy"
+            labelPosition="after"
+            class="form-control"
+            [(ngModel)]="sortBy"
+          >
+            <mat-option value="relevance">Relevance</mat-option>
+            <mat-option value="distance">Distance</mat-option>
+            <mat-option value="ratingAsc">Rating (Low To High)</mat-option>
+            <mat-option value="ratingDesc">Rating (High To Low)</mat-option>
+            <mat-option value="priceAsc">Price (Low To High)</mat-option>
+            <mat-option value="priceDesc">Price (High To Low)</mat-option>
+          </mat-select>       
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+  </div>
+  <button mat-raised-button color="accent" type="submit" [disabled]="searchForm.form.invalid">Search</button>
+</form>
