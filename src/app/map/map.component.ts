@@ -53,7 +53,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
       position: this.mapLatLng,
       map: null,
       title: 'Your Location',
-      icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+      icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
     });
 
   }
